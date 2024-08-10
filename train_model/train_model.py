@@ -56,7 +56,10 @@ async def train_model():
     fine_tuning_response = await client.fine_tuning.jobs.create(
         training_file=file_id,
         model=model_name,
-        suffix=suffix
+        suffix=suffix,
+        hyperparameters={
+            "n_epochs": 4
+        }
     )
 
     job_id = fine_tuning_response.id
